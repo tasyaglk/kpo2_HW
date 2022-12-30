@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Output {
-    public static List<String> filesAns2 = BuildingSequence.getAns();
+    public List<String> filesAns2 = BuildingSequence.getAns();
     public static List<File> fileList2 = Work.getFilesList();
     private String str = Work.getDirName();
 

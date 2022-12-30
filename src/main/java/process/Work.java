@@ -1,5 +1,6 @@
 package process;
 
+import cycleCheck.CycleCheck;
 import output.Output;
 
 import java.io.File;
@@ -11,11 +12,18 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.lang.Math.max;
+
 public class Work {
     public static Map<String, List<String>> parAndKids = new HashMap<>();
     public static Map<String, List<String>> kidsAndPar = new HashMap<>();
     private static List<File> filesList = new ArrayList<>();
+    private static HashSet<String> allNames = new HashSet<>();
     public static String dirName;
+
+    public static HashSet<String> getAllNames() {
+        return allNames;
+    }
 
     public static List<File> getFilesList() {
         return filesList;
@@ -70,7 +78,9 @@ public class Work {
         for (File file : filesList) {
             readFile(file);
         }
-
+        CycleCheck cc = new CycleCheck();
+        cc.allFilesCorrect();
+        cc.ifCycleCheck();
         BuildingSequence k = new BuildingSequence();
         k.findSeq();
         Output u = new Output();
@@ -78,6 +88,7 @@ public class Work {
     }
 
     void readFile(File file) throws FileNotFoundException {
+        allNames.add(file.getName());
         List<String> inFile = new ArrayList<>();
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()) {
@@ -88,8 +99,10 @@ public class Work {
             if (str.contains("require")) {
                 fl = 1;
                 String file1 = new String();
-                int ind = str.indexOf("/");
-                file1 = str.substring(ind + 1, str.length() - 1);
+                Integer ind1 = str.indexOf("/");
+                Integer ind2 = str.indexOf("'");
+                file1 = str.substring(max(ind1, ind2) + 1, str.length() - 1);
+                allNames.add(file1);
 
                 // ребенок - много родителей
                 if (!kidsAndPar.containsKey(file.getName())) {

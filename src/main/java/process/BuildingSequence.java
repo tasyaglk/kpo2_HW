@@ -16,6 +16,7 @@ public class BuildingSequence {
         return filesAns;
     }
 
+
     private void maxX() {
         for (List<String> val : kidsAndPar2.values()) {
             maxx = max(maxx, val.size());
