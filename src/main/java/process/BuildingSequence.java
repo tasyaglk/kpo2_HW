@@ -53,7 +53,6 @@ public class BuildingSequence {
                     String key = entry.getKey();
                     Integer value = entry.getValue();
                     if (value.equals(j)) {
-                        System.out.println(key);
                         filesAns.add(key);
                     }
                 }

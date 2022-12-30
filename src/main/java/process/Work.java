@@ -1,6 +1,6 @@
 package process;
 
-import cycleCheck.CycleCheck;
+import checkErrors.CheckErrors;
 import output.Output;
 
 import java.io.File;
@@ -35,10 +35,6 @@ public class Work {
 
     public static Map<String, List<String>> getMapKidsAndPar() {
         return kidsAndPar;
-    }
-
-    public static Map<String, List<String>> getMapParAndKids() {
-        return parAndKids;
     }
 
     public void readDir() throws FileNotFoundException {
@@ -78,17 +74,22 @@ public class Work {
         for (File file : filesList) {
             readFile(file);
         }
-        CycleCheck cc = new CycleCheck();
-        cc.allFilesCorrect();
-        cc.ifCycleCheck();
-        BuildingSequence k = new BuildingSequence();
-        k.findSeq();
-        Output u = new Output();
-        u.genNewFile();
+        CheckErrors ifErrors = new CheckErrors();
+        ifErrors.allFilesCorrect();
+        ifErrors.ifCycleCheck();
+        ifErrors.ifEmpty();
+        BuildingSequence build = new BuildingSequence();
+        build.findSeq();
+        Output newFile = new Output();
+        newFile.genNewFile();
     }
 
     void readFile(File file) throws FileNotFoundException {
-        allNames.add(file.getName());
+        String sName = file.getName();
+        if (sName.indexOf(".") > 0) {
+            sName = sName.substring(0, sName.lastIndexOf("."));
+        }
+        allNames.add(sName);
         List<String> inFile = new ArrayList<>();
         Scanner scanner = new Scanner(file);
         while (scanner.hasNext()) {
@@ -101,27 +102,26 @@ public class Work {
                 String file1 = new String();
                 Integer ind1 = str.indexOf("/");
                 Integer ind2 = str.indexOf("'");
-                file1 = str.substring(max(ind1, ind2) + 1, str.length() - 1);
+                file1 = str.substring(max(ind2, ind1) + 1, str.length() - 1);
+                if (file1.indexOf(".") > 0) {
+                    file1 = file1.substring(0, file1.lastIndexOf("."));
+                }
                 allNames.add(file1);
 
-                // ребенок - много родителей
-                if (!kidsAndPar.containsKey(file.getName())) {
-                    kidsAndPar.put(file.getName(), new ArrayList<String>());
+                if (!kidsAndPar.containsKey(sName)) {
+                    kidsAndPar.put(sName, new ArrayList<String>());
                 }
-                kidsAndPar.get(file.getName()).add(file1);
+                kidsAndPar.get(sName).add(file1);
 
-                // родитель - сного детей
                 if (!parAndKids.containsKey(file1)) {
                     parAndKids.put(file1, new ArrayList<String>());
-
                 }
-                parAndKids.get(file1).add(file.getName());
+                parAndKids.get(file1).add(sName);
             }
         }
-        if (fl == 0) // тут можно так делать
-        {
-            parAndKids.put(file.getName(), new ArrayList<String>());
-            kidsAndPar.put(file.getName(), new ArrayList<String>());
+        if (fl == 0) {
+            parAndKids.put(sName, new ArrayList<String>());
+            kidsAndPar.put(sName, new ArrayList<String>());
         }
     }
 
