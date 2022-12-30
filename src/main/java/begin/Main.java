@@ -7,6 +7,5 @@ public class Main {
         runner.Runner r = new runner.Runner();
         r.beginProgramm();
     }
-    // норм имена
-    // потом будет бомба
+    // С Новым Годом!!!
 }
