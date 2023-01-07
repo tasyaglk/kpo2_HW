@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static sun.swing.MenuItemLayoutHelper.max;
+import static java.lang.Math.max;
 
 public class BuildingSequence {
     Integer maxx = 0;
-    public static Map<String, List<String>> kidsAndPar2 = Work.getMapKidsAndPar();
+    public static Map<String, List<String>> kidsAndPar2 = ReadFile.getMapKidsAndPar();
     public static List<String> filesAns = new ArrayList<>();
 
     public static List<String> getAns() {
@@ -36,10 +36,10 @@ public class BuildingSequence {
                 }
             }
             Map<String, Integer> fileCnt = new HashMap<>();
-            for (Integer j = 0; j < filesFixSize.size(); j++) {
-                Integer cnt = 0;
+            for (int j = 0; j < filesFixSize.size(); j++) {
+                int cnt = 0;
                 String name = filesFixSize.get(j);
-                for (Integer k = 0; k < filesFixSize.size(); k++) {
+                for (int k = 0; k < filesFixSize.size(); k++) {
                     List<String> value = kidsAndPar2.get(filesFixSize.get(j));
                     if (value.contains(name)) {
                         cnt += 1;

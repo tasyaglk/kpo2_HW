@@ -1,17 +1,18 @@
 package checkErrors;
 
-import process.Work;
+import process.ReadFile;
+import process.ReadDir;
 
 import java.io.File;
-import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
 import java.util.Map;
 
 public class CheckErrors {
 
-    public static Map<String, List<String>> kidsAndPar2 = Work.getMapKidsAndPar();
-    public static HashSet<String> allNames = Work.getAllNames();
-    public static List<File> allFiles = Work.getFilesList();
+    public static Map<String, List<String>> kidsAndPar2 = ReadFile.getMapKidsAndPar();
+    public static Set<String> allNames = ReadFile.getAllNames();
+    public static List<File> allFiles = ReadDir.getFilesList();
 
     public void allFilesCorrect() {
         for (String s : allNames) {
@@ -51,20 +52,18 @@ public class CheckErrors {
         }
     }
 
-    private int check(String name, String beg) {
+    private void check(String name, String beg) {
         if (kidsAndPar2.get(name).size() == 0) {
-            return 0;
+            return;
         }
         if (!kidsAndPar2.get(name).contains(beg)) {
             for (String str : kidsAndPar2.get(name)) {
-                int k = check(str, beg);
+                check(str, beg);
             }
-            return 0;
         } else {
             System.out.println("Dependency between the file " + beg + " and " + name);
             System.out.println("Cycle found, so good bye!!!");
             System.exit(1);
-            return 1;
         }
     }
 }

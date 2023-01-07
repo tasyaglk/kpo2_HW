@@ -1,12 +1,12 @@
 package runner;
 
-import process.Work;
+import process.ReadDir;
 
 import java.io.*;
 
 public class Runner {
     public void beginProgramm() throws FileNotFoundException {
-        process.Work beg = new Work();
+        ReadDir beg = new ReadDir();
         beg.readDir();
     }
 }

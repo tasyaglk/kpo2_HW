@@ -1,11 +1,12 @@
 package begin;
 
+import runner.Runner;
+
 import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        runner.Runner r = new runner.Runner();
+        Runner r = new runner.Runner();
         r.beginProgramm();
     }
-    // С Новым Годом!!!
 }
