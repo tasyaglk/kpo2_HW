@@ -12,18 +12,24 @@ public class BuildingSequence {
     public static Map<String, List<String>> kidsAndPar2 = ReadFile.getMapKidsAndPar();
     public static List<String> filesAns = new ArrayList<>();
 
+    /** Функция, которая передает список отсортированных файлов. */
     public static List<String> getAns() {
         return filesAns;
     }
-
 
     private void maxX() {
         for (List<String> val : kidsAndPar2.values()) {
             maxx = max(maxx, val.size());
         }
     }
+    /** Функция, которая вызывает функцию, что строит искомую последовательность. */
+    public void findSeq()
+    {
+        findSeq1();
+    }
 
-    public void findSeq() {
+    /** Функция, которая строит искомую последовательность. */
+    private void findSeq1() {
         maxX();
         for (Integer i = 0; i <= maxx; i++) {
             List<String> filesFixSize = new ArrayList<>();

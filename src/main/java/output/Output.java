@@ -12,6 +12,7 @@ public class Output {
     public static List<File> fileList2 = ReadDir.getFilesList();
     private final String str = ReadDir.getDirName();
 
+    /** Функция, которвя создает текстовый файл для ответа и записывает туда ответ. */
     public void genNewFile() {
         String strResult = str + "/result.txt";
         try (FileWriter writer = new FileWriter(strResult, false)) {
