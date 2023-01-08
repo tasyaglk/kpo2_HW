@@ -14,7 +14,9 @@ public class CheckErrors {
     public static Set<String> allNames = ReadFile.getAllNames();
     public static List<File> allFiles = ReadDir.getFilesList();
 
-    /** Функция проверки, что все файлы присутствуют в корневой папке. */
+    /**
+     * Функция проверки, что все файлы присутствуют в корневой папке.
+     */
     public void allFilesCorrect() {
         for (String s : allNames) {
             int fl = 0;
@@ -39,7 +41,9 @@ public class CheckErrors {
         }
     }
 
-    /** Функция проверки, что корневая папка не пустая. */
+    /**
+     * Функция проверки, что корневая папка не пустая.
+     */
     public void ifEmpty() {
         if (allFiles.size() == 0) {
             System.out.println("There is no files");
@@ -48,14 +52,18 @@ public class CheckErrors {
         }
     }
 
-    /** Функция проверки, что в корневой папке нет циклов. */
+    /**
+     * Функция проверки, что в корневой папке нет циклов.
+     */
     public void ifCycleCheck() {
         for (String name : allNames) {
             check(name, name);
         }
     }
 
-    /** Вспомогательная функция проверки, что в корневой папке нет циклов. */
+    /**
+     * Вспомогательная функция проверки, что в корневой папке нет циклов.
+     */
     private void check(String name, String beg) {
         if (kidsAndPar2.get(name).size() == 0) {
             return;

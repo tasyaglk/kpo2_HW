@@ -12,18 +12,23 @@ public class ReadFile {
     private static final Map<String, List<String>> parAndKids = new HashMap<>();
     private static final Map<String, List<String>> kidsAndPar = new HashMap<>();
 
-    /** Функция, которая передает список всех файлов. */
+    /**
+     * Функция, которая передает список всех файлов.
+     */
     public static Set<String> getAllNames() {
         return allNames;
     }
 
-    /** Функция, которая передает словарь {ребенок, список всех его родителей}. */
+    /**
+     * Функция, которая передает словарь {ребенок, список всех его родителей}.
+     */
     public static Map<String, List<String>> getMapKidsAndPar() {
         return kidsAndPar;
     }
 
     /**
      * Функция, которая вызывает вспомогательную функцию, которая считывает файлы с их содержимым
+     *
      * @param file - файл, который нужно прочитать
      */
     public void readFile(File file) throws FileNotFoundException {
@@ -32,6 +37,7 @@ public class ReadFile {
 
     /**
      * Функция которая считывает файлы с их содержимым
+     *
      * @param file - файл6 который нужно прочитать
      */
     private void readFile1(File file) throws FileNotFoundException {

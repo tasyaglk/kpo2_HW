@@ -13,22 +13,30 @@ public class ReadDir {
     public static String dirName;
     private static List<File> filesList = new ArrayList<>();
 
-    /** Функция, которая передает имя директории. */
+    /**
+     * Функция, которая передает имя директории.
+     */
     public static String getDirName() {
         return dirName;
     }
 
-    /** Функция, которая передает список файлов. */
+    /**
+     * Функция, которая передает список файлов.
+     */
     public static List<File> getFilesList() {
         return filesList;
     }
 
-    /** Функция, которая вызывает функцию, что считывает файлы с содержимым. */
+    /**
+     * Функция, которая вызывает функцию, что считывает файлы с содержимым.
+     */
     public void readDir() throws FileNotFoundException {
         readDir1();
     }
 
-    /** Функция, что считывает файлы с содержимым. */
+    /**
+     * Функция, что считывает файлы с содержимым.
+     */
     private void readDir1() throws FileNotFoundException {
         dirName = null;
         boolean isInputWorking = true;

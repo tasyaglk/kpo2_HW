@@ -12,7 +12,9 @@ public class BuildingSequence {
     public static Map<String, List<String>> kidsAndPar2 = ReadFile.getMapKidsAndPar();
     public static List<String> filesAns = new ArrayList<>();
 
-    /** Функция, которая передает список отсортированных файлов. */
+    /**
+     * Функция, которая передает список отсортированных файлов.
+     */
     public static List<String> getAns() {
         return filesAns;
     }
