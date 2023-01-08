@@ -10,14 +10,14 @@ import java.util.Map;
 
 public class CheckErrors {
 
-    public static Map<String, List<String>> kidsAndPar2 = ReadFile.getMapKidsAndPar();
-    public static Set<String> allNames = ReadFile.getAllNames();
-    public static List<File> allFiles = ReadDir.getFilesList();
+    public final static Map<String, List<String>> kidsAndPar2 = ReadFile.getMapKidsAndPar();
+    public final static Set<String> allNames = ReadFile.getAllNames();
+    public final static List<File> allFiles = ReadDir.getFilesList();
 
     /**
      * Функция проверки, что все файлы присутствуют в корневой папке.
      */
-    public void allFilesCorrect() {
+    public final void allFilesCorrect() {
         for (String s : allNames) {
             int fl = 0;
             if (s.equals(".DS_Store")) {
@@ -44,7 +44,7 @@ public class CheckErrors {
     /**
      * Функция проверки, что корневая папка не пустая.
      */
-    public void ifEmpty() {
+    public final void ifEmpty() {
         if (allFiles.size() == 0) {
             System.out.println("There is no files");
             System.out.println("Good bye!!!");

@@ -8,7 +8,7 @@ public class Work {
     /**
      * Функция, в которой проверяется наличие ошибок. Если их нет, то программа выполянется как надо.
      */
-    public void work() {
+    public final void work() {
         CheckErrors ifErrors = new CheckErrors();
         ifErrors.allFilesCorrect();
         ifErrors.ifCycleCheck();

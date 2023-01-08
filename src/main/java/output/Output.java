@@ -8,14 +8,14 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Output {
-    public List<String> filesAns2 = BuildingSequence.getAns();
-    public static List<File> fileList2 = ReadDir.getFilesList();
+    public final List<String> filesAns2 = BuildingSequence.getAns();
+    public final static List<File> fileList2 = ReadDir.getFilesList();
     private final String str = ReadDir.getDirName();
 
     /**
      * Функция, которвя создает текстовый файл для ответа и записывает туда ответ.
      */
-    public void genNewFile() {
+    public final void genNewFile() {
         String strResult = str + "/result.txt";
         try (FileWriter writer = new FileWriter(strResult, false)) {
             for (String s : filesAns2) {

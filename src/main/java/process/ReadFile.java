@@ -31,7 +31,7 @@ public class ReadFile {
      *
      * @param file - файл, который нужно прочитать
      */
-    public void readFile(File file) throws FileNotFoundException {
+    public final void readFile(File file) throws FileNotFoundException {
         readFile1(file);
     }
 

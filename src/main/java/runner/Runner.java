@@ -8,7 +8,7 @@ public class Runner {
     /**
      * Функция начала работы.
      */
-    public void beginProgramm() throws FileNotFoundException {
+    public final void beginProgramm() throws FileNotFoundException {
         ReadDir beg = new ReadDir();
         beg.readDir();
     }

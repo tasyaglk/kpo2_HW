@@ -30,7 +30,7 @@ public class ReadDir {
     /**
      * Функция, которая вызывает функцию, что считывает файлы с содержимым.
      */
-    public void readDir() throws FileNotFoundException {
+    public final void readDir() throws FileNotFoundException {
         readDir1();
     }
 
@@ -63,10 +63,7 @@ public class ReadDir {
             }
         } while (isInputWorking);
         try {
-            filesList = Files.walk(Paths.get(dirName))
-                    .filter(Files::isRegularFile)
-                    .map(Path::toFile)
-                    .collect(Collectors.toList());
+            filesList = Files.walk(Paths.get(dirName)).filter(Files::isRegularFile).map(Path::toFile).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -9,8 +9,8 @@ import static java.lang.Math.max;
 
 public class BuildingSequence {
     Integer maxx = 0;
-    public static Map<String, List<String>> kidsAndPar2 = ReadFile.getMapKidsAndPar();
-    public static List<String> filesAns = new ArrayList<>();
+    public final static Map<String, List<String>> kidsAndPar2 = ReadFile.getMapKidsAndPar();
+    public final static List<String> filesAns = new ArrayList<>();
 
     /**
      * Функция, которая передает список отсортированных файлов.
@@ -24,13 +24,17 @@ public class BuildingSequence {
             maxx = max(maxx, val.size());
         }
     }
-    /** Функция, которая вызывает функцию, что строит искомую последовательность. */
-    public void findSeq()
-    {
+
+    /**
+     * Функция, которая вызывает функцию, что строит искомую последовательность.
+     */
+    public final void findSeq() {
         findSeq1();
     }
 
-    /** Функция, которая строит искомую последовательность. */
+    /**
+     * Функция, которая строит искомую последовательность.
+     */
     private void findSeq1() {
         maxX();
         for (Integer i = 0; i <= maxx; i++) {
